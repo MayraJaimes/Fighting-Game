@@ -1,9 +1,128 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+  	<title>Fighting Game</title>
 </head>
-<body>
+<body> 
+
+	<nav class="navbar navbar-light bg-light">
+		<span class="navbar-brand mb-0 h1">Fighting Game</span>
+	</nav>
+
+	<div class="container">
+
+		<div class="main subheading">
+			<div class="instructions">
+				<p class="title">Instructions:</p>
+				<p>For this game you first have to pick a heroe. This is the heroe that you will use to fight the villains shown on the right. The goal is the game is to reduce the villains health points to 0 or below. If at any point your character's health points get to 0 or below you lose the game. </p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class ="col-md-6 col-sm-12 col-xs-12 hero">
+				<div class="subheading">
+				Heroes
+				</div>
+				<div class="row">
+					<div class ="col-md-3 col-sm-3 col-xs-3">
+						<div id= "heroe1" class="card card1" style="width: 100%;">
+						  <img id="image" class="card-img-top" src="assets/images/CaptainAmerica.jpg" alt="Card image cap">
+						  <div class="card-body">
+						    <h4 class="card-title">Captain America</h4>
+						    <p class="card-text">Health points:<span class="heroeHP"></span></p>
+						  </div>
+						</div>
+					</div>
+					<div class ="col-md-3 col-sm-3 col-xs-3">
+						<div id= "heroe2" class="card card2" style="width: 100%;">
+						  <img class="card-img-top" src="assets/images/Spiderman.jpg" alt="Card image cap">
+						  <div class="card-body">
+						    <h4 class="card-title">Spiderman</h4>
+						    <p class="card-text">Health points:<span class="heroeHP"></span></p>
+						  </div>
+						</div>
+					</div>
+					<div class ="col-md-3 col-sm-3 col-xs-3">
+						<div id= "heroe3" class="card card3" style="width: 100%;">
+						  <img class="card-img-top" src="assets/images/Thor.jpg" alt="Card image cap">
+						  <div class="card-body">
+						    <h4 class="card-title">Thor</h4>
+						    <p class="card-text">Health points:<span class="heroeHP"></span></p>
+						  </div>
+						</div>
+					</div>
+					<div class ="col-md-3 col-sm-3 col-xs-3">
+						<div id= "heroe4" class="card card4" style="width: 100%;">
+						  <img class="card-img-top" src="assets/images/Batman.jpg" alt="Card image cap">
+						  <div class="card-body">
+						    <h4 class="card-title">Batman</h4>
+						    <p class="card-text">Health points:<span class="heroeHP"></span></p>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class= "col-md-6 col-sm-12 col-xs-12 enemy">
+				<div class="subheading">
+					Villains
+				</div>
+				<div class= "row">
+					<div class ="col-md-3 col-sm-3 col-xs-3">
+						<div id= "villain5" class="card card5" style="width: 100%;">
+						  <img class="card-img-top" src="assets/images/Red Skull.jpg" alt="Card image cap">
+						  <div class="card-body">
+						    <h4 class="card-title">Red Skull</h4>
+						    <p class="card-text">Health points:<span class="villainHP"></span></p>
+						  </div>
+						</div>
+					</div>
+					
+					<div class ="col-md-3 col-sm-3 col-xs-3">
+						<div id= "villain6" class="card 6" style="width: 100%;">
+						  <img class="card-img-top" src="assets/images/Joker.jpg" alt="Card image cap">
+						  <div class="card-body">
+						    <h4 class="card-title">Joker</h4>
+						    <p class="card-text">Health points:<span class="villainHP"></span></p>
+						  </div>
+						</div>
+					</div>
+
+					<div class ="col-md-3 col-sm-3 col-xs-3">
+						<div id= "villain7" class="card 7" style="width: 100%;">
+						  <img class="card-img-top" src="assets/images/Loki.jpg" alt="Card image cap">
+						  <div class="card-body">
+						    <h4 class="card-title">Loki</h4>
+						    <p class="card-text">Health points:<span class="villainHP"></span></p>
+						  </div>
+						</div>
+					</div>
+
+					<div class ="col-md-3 col-sm-3 col-xs-3">
+						<div id= "villain8" class="card 8" style="width: 100%;">
+						  <img class="card-img-top" src="assets/images/GreenGoblin.jpg" alt="Card image cap">
+						  <div class="card-body">
+						    <h4 class="card-title">Green Goblin</h4>
+						    <p class="card-text">Health points:<span class="villainHP"></span></p>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class= "row">
+				<div class="col-md-12 text-center"> 
+			    	<button id="singlebutton" name="singlebutton" class="btn btn-primary">Attack Button!</button> 
+				</div>	
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="assets/javascript/game.js"></script>
+
 
 </body>
 </html>
