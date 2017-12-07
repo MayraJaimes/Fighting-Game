@@ -1,147 +1,72 @@
 $(document).ready(function() {
 
-	var heroHead = $('.hero .subheading');
-	var villainHead = $('.enemy .subheading');
+	var Hero = function(name) {
+		this.name = name;
+		this.attackPower = 20;
+		this.hp = Math.floor(Math.random()*200) + 100;
+	}
 
-    var gameOver = false;
- 	var villainHP = 0;
- 	var heroeHP = 0;
+	var hero1 = new Hero('Captain American');
+	var hero2 = new Hero('Spiderman');
+	var hero3 = new Hero('Thor');
+	var hero4 = new Hero('Batman');
 
-    $('.card1').click(function() {
-        $(this).animate({
-            top: '+=200px'
-        }, 500);
-        $(this).animate({
-            left: '+=220px'
-        }, {duration: 500, queue: false}); 
-        heroHead.animate({
-            top: '+=200px'
-        }, {duration: 500, queue: false});    
-        heroHead.html("This is your Character! Now pick the first villain to fight");   
-        $(".card2, .card3, .card4").fadeOut(500);
-    });
+	var Villain = function(name, counterAttackPower) {
+		this.name = name;
+		this.counterAttackPower = counterAttackPower;
+		this.hp = Math.floor(Math.random()*200) + 100;
+	}
 
-    $('.card2').click(function() {
- 		$(this).animate({
-            top: '+=200px'
-        }, 500);
-        $(this).animate({
-            left: '+=70px'
-        }, {duration: 500, queue: false}); 
-        heroHead.animate({
-            top: '+=200px'
-        }, {duration: 500, queue: false});    
-        heroHead.html("This is your Character! Now pick the first villain to fight");
-        $(".card1, .card3, .card4").fadeOut(500);
-    });
+	var villain1 = new Villain("Red Skull", 20);
+	var villain2 = new Villain("Joker", 15);
+	var villain3 = new Villain("Loki", 5);
+	var villain4 = new Villain("Green Goblin", 10);
 
-    $('.card3').click(function() {
-     	$(this).animate({
-            top: '+=200px'
-        }, 500);
-        $(this).animate({
-            left: '-=70px'
-        }, {duration: 500, queue: false}); 
-        heroHead.animate({
-            top: '+=200px'
-        }, {duration: 500, queue: false});    
-        heroHead.html("This is your Character! Now pick the first villain to fight!");
-        $(".card1, .card2, .card4").fadeOut(500);
-    });
+	function displayHP () {
+		$('#heroe1 .HP').html(hero1.hp); 
+		$('#heroe2 .HP').html(hero2.hp); 
+		$('#heroe3 .HP').html(hero3.hp); 
+		$('#heroe4 .HP').html(hero4.hp); 
+		$('#villain1 .HP').html(villain1.hp); 
+		$('#villain2 .HP').html(villain2.hp); 
+		$('#villain3 .HP').html(villain3.hp); 
+		$('#villain4 .HP').html(villain4.hp); 
+	};
 
-    $('.card4').click(function() {
-         $(this).animate({
-            top: '+=200px'
-        }, 500);
-        $(this).animate({
-            left: '-=220px'
-        }, {duration: 500, queue: false}); 
-        heroHead.animate({
-            top: '+=200px'
-        }, {duration: 500, queue: false});    
-        heroHead.html("This is your Character! Now pick the first villain to fight!");
-        $(".card1, .card2, .card3").fadeOut(500);
-    });
+	function heroePos() {
 
-    $('.card5').click(function() {
-        $(this).animate({
-            top: '+=200px'
-        }, 500);
-        $(this).animate({
-            left: '+=220px'
-        }, {duration: 500, queue: false});  
-        $(".enemy .subheading").animate({
-            top: '+=200px'
-        }, {duration: 500, queue: false});    
-        villainHead.html("Current villain you are fighting");       
-        heroHead.html("Fight the villain!");   
-    });
+	};
 
-    $('.card6').click(function() {
-        $(this).animate({
-            top: '+=200px'
-        }, 500);
-        $(this).animate({
-            left: '+=70px'
-        }, {duration: 500, queue: false});  
-        villainHead.html("Current villain you are fighting");           
-        heroHead.html("Fight the villain!");   
-    });
+	function villainPos() {
 
-    $('.card7').click(function() {
-        $(this).animate({
-            top: '+=200px'
-        }, 500);
-        $(this).animate({
-            left: '-=70px'
-        }, {duration: 500, queue: false});
-        villainHead.html("Current villain you are fighting");             
-        heroHead.html("Fight the villain!");   
-    });
+	};
 
-    $('.card8').click(function() {
-        $(this).animate({
-            top: '+=200px'
-        }, 500);
-        $(this).animate({
-            left: '-=220px'
-        }, {duration: 500, queue: false}); 
-        villainHead.html("Current villain you are fighting");            
-        heroHead.html("Fight the villain!");   
-    });
+	function resetGame() {
+		
+	};
 
-    $("#singlebutton").click(function(){ 
-    	heroeHP++;
-    	villainHP ++; 
-    	$('.heroeHP').html(heroeHP);
-    	$('.villainHP').html(villainHP);
+	function startGame() {
+	};	
 
-    });
+	displayHP();
+
+	$(".card").click(function() {
+   // Hides all images.
+    	$(".card").hide();
+   // Shows appropriate one.
+		var imageId = $(this).data("imageId"); // Fetches the value of the data-imageId attribute.
+		$(".image[data-imageId="+imageId+"]").show();
+	});
 
 
-/*
+	$(".thumbnail").click(function() {
+   // Hides all images.
+   $(".image").hide();
 
-    if (hpHeroe <= 0) {
-    	gameOver == true;
-    	//show reset button
-    	}
-    }
-
-    if (hpVillain <=0){
-    	//click on another villain
-    }
-
-
-
-    function startGame () {
-
-    }
-
-    function reset (){
-
-    }
-
-    */
+   // Shows appropriate one.
+   var imageId = $(this).data("imageId"); // Fetches the value of the data-imageId attribute.
+   $(".image[data-imageId="+imageId+"]").show();
+});
 
 });
 
