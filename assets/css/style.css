@@ -40,7 +40,7 @@ p {
 	margin: 0;
 }
 
-.villain .card-text {
+.villainsContent .card-text {
 	border: 2px black solid;
 	background-color: #9ACD32;
 }
@@ -67,14 +67,22 @@ p {
 	position: relative;
 }
 
-.heroe .subheading {
+.heroesSubheading {
 	background-color: #1E90FF;
 	text-align: center;
+	margin: 5px;
+	width: 100%;
+	font-size: 20px;
+	position: relative;
 }
 
-.villain .subheading {
+.villainsSubheading {
 	background-color: #9ACD32;
 	text-align: center;
+	margin: 5px;
+	width: 100%;
+	font-size: 20px;
+	position: relative;
 }
 
 .instructions {
@@ -88,7 +96,15 @@ p {
 button {
 	margin:50px auto 0 auto;
  	display:block;
- 	visibility: hidden;
+}
+
+.heroPicked, .villainPicked {
+	float: left;
+
+}
+
+.heroesRemaining {
+	opacity: .3;
 }
 
 
