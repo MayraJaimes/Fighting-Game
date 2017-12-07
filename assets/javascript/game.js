@@ -6,10 +6,12 @@ $(document).ready(function() {
 		this.hp = Math.floor(Math.random()*200) + 100;
 	}
 
-	var hero1 = new Hero('Captain American');
-	var hero2 = new Hero('Spiderman');
-	var hero3 = new Hero('Thor');
-	var hero4 = new Hero('Batman');
+	var heroes = {
+		hero1: new Hero('Captain America'),
+		hero2: new Hero('Spiderman'),
+		hero3: new Hero('Thor'),
+		hero4: new Hero('Batman')
+	}
 
 	var Villain = function(name, counterAttackPower) {
 		this.name = name;
@@ -17,20 +19,25 @@ $(document).ready(function() {
 		this.hp = Math.floor(Math.random()*200) + 100;
 	}
 
-	var villain1 = new Villain("Red Skull", 20);
-	var villain2 = new Villain("Joker", 15);
-	var villain3 = new Villain("Loki", 5);
-	var villain4 = new Villain("Green Goblin", 10);
+	var villains = {
+		villain1: new Villain("Red Skull", 20),
+		villain2: new Villain("Joker", 15),
+		villain3: new Villain("Loki", 5),
+		villain4: new Villain("Green Goblin", 10)
+	}
+
+	var chosenHero;
+	var chosenVillain;
 
 	function displayHP () {
-		$('#heroe1 .HP').html(hero1.hp); 
-		$('#heroe2 .HP').html(hero2.hp); 
-		$('#heroe3 .HP').html(hero3.hp); 
-		$('#heroe4 .HP').html(hero4.hp); 
-		$('#villain1 .HP').html(villain1.hp); 
-		$('#villain2 .HP').html(villain2.hp); 
-		$('#villain3 .HP').html(villain3.hp); 
-		$('#villain4 .HP').html(villain4.hp); 
+		$('#hero1 .HP').html(heroes.hero1.hp); 
+		$('#hero2 .HP').html(heroes.hero2.hp); 
+		$('#hero3 .HP').html(heroes.hero3.hp); 
+		$('#hero4 .HP').html(heroes.hero4.hp); 
+		$('#villain1 .HP').html(villains.villain1.hp); 
+		$('#villain2 .HP').html(villains.villain2.hp); 
+		$('#villain3 .HP').html(villains.villain3.hp); 
+		$('#villain4 .HP').html(villains.villain4.hp); 
 	};
 
 	function heroePos() {
@@ -50,23 +57,39 @@ $(document).ready(function() {
 
 	displayHP();
 
-	$(".card").click(function() {
-   // Hides all images.
-    	$(".card").hide();
-   // Shows appropriate one.
-		var imageId = $(this).data("imageId"); // Fetches the value of the data-imageId attribute.
-		$(".image[data-imageId="+imageId+"]").show();
+	isHeroChosen = false;
+	isVillainChosen = false;
+
+    $(".hero").on("click", function() {
+    	if (isHeroChosen) return;
+    	else {
+    		var heroId = $(this).attr('id');
+    		chosenHero = heroes[heroId];
+			$(this).appendTo(".heroPicked");
+			$(".heroes").addClass("heroesRemaining");
+			var newHtml =`<p class="heroesSubheading">You are ${chosenHero.name}! Now pick the first villain to fight </p>`; 
+			$(".heroPickedSubheading").append(newHtml);
+			isHeroChosen = true;
+		}
+	});
+
+	$(".villain").on("click", function() {
+		if (isVillainChosen) return;
+			else {
+			$(this).appendTo(".villainPicked");
+			isVillainChosen = true;
+		}
 	});
 
 
-	$(".thumbnail").click(function() {
-   // Hides all images.
-   $(".image").hide();
 
-   // Shows appropriate one.
-   var imageId = $(this).data("imageId"); // Fetches the value of the data-imageId attribute.
-   $(".image[data-imageId="+imageId+"]").show();
-});
+
+
+
+    
+
+
+
 
 });
 
