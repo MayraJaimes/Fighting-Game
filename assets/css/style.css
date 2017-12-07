@@ -40,7 +40,7 @@ p {
 	margin: 0;
 }
 
-.enemy .card-text {
+.villain .card-text {
 	border: 2px black solid;
 	background-color: #9ACD32;
 }
@@ -67,12 +67,12 @@ p {
 	position: relative;
 }
 
-.hero .subheading {
+.heroe .subheading {
 	background-color: #1E90FF;
 	text-align: center;
 }
 
-.enemy .subheading {
+.villain .subheading {
 	background-color: #9ACD32;
 	text-align: center;
 }
@@ -88,5 +88,8 @@ p {
 button {
 	margin:50px auto 0 auto;
  	display:block;
+ 	visibility: hidden;
 }
+
+
 
