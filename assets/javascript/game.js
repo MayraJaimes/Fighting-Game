@@ -4,13 +4,11 @@ $(document).ready(function() {
 	var chosenVillain;
 	var isHeroChosen = false;
 	var isVillainChosen = false;
-	var gameOver = false;
-	var defeatVillain = false;
 	var villainsToFight = 4;
+	var gameOver = false;
+	var lose = false;
 	var won = false;
-	var chosenVillainNewHp;
-	var chosenHeroNewHp;
-
+	
 	var Hero = function(name) {
 		this.name = name;
 		this.attackPower = 20;
@@ -37,8 +35,6 @@ $(document).ready(function() {
 		villain4: new Villain("Green Goblin", 10)
 	}
 
-
-
 	function displayHP () {
 		$('#hero1 .HP').html(heroes.hero1.hp); 
 		$('#hero2 .HP').html(heroes.hero2.hp); 
@@ -50,9 +46,6 @@ $(document).ready(function() {
 		$('#villain4 .HP').html(villains.villain4.hp); 
 	};
 
-	function heroePos() {
-
-	};
 
 	function villainPos() {
 
@@ -69,15 +62,15 @@ $(document).ready(function() {
 
 //CLICK HERO
 
+
+
     $(".hero").on("click", function() {
     	if (isHeroChosen) return;
     	else {
     		var heroId = $(this).attr('id');
     		chosenHero = heroes[heroId];
 			$(this).appendTo(".heroPicked");
-
 			$(".heroesContent").addClass("heroesRemaining");
-
 			var newHtml =`<p class="heroesSubheading">You are ${chosenHero.name}! Now pick the first villain to fight </p>`; 
 			$(".heroPickedSubheading").append(newHtml);
 			isHeroChosen = true;
@@ -91,75 +84,65 @@ $(document).ready(function() {
 		
 		else {
 			villainsToFight --;
+
+			console.log(villainsToFight);
 			var villainId = $(this).attr('id');
 			chosenVillain = villains[villainId];
 			$(this).appendTo(".villainPicked");
-
 			$(".villainsContent").addClass("villainsRemaining");
-
 			var newHtml =`<p class="villainsSubheading">You are fighting ${chosenVillain.name}! Now you can attack! </p>`; 
 			$(".villainPickedSubheading").append(newHtml);
-
 			$(".attackButton").css("visibility", "visible");
-
 			isVillainChosen = true;
 		}
 	});
 
 //ATTACK BUTTON
-
+		
 	$(".attackButton").on("click", function() {
-		chosenVillainNewHp = chosenVillain.hp - chosenHero.attackPower;
-		chosenHeroNewHp = chosenHero.hp - chosenVillain.counterAttackPower;
+		if (isVillainChosen && isHeroChosen && chosenHero.hp > 0 && villainsToFight >= 0 ) {
+			chosenVillain.hp -= chosenHero.attackPower;
+			chosenHero.hp -= chosenVillain.counterAttackPower;
 
-		if (isVillainChosen && isHeroChosen) {
-			$('.villainPicked .HP').html(chosenVillainNewHp); 
-			$('.heroPicked .HP').html(chosenHeroNewHp); 
 			$(".villainPickedResults p").css("visibility", "visible");
 			$(".heroPickedResults p").css("visibility", "visible");
-			$('.heroPickedResults p').html(`${chosenVillain.name} attacked you back for damage of ${chosenVillain.counterAttackPower}`); 
-			$('.villainPickedResults p').html(`You attacked villain ${chosenVillain.name} for damage of ${chosenHero.attackPower}`); 
-		};
+			
+			$('.villainPickedResults p').html(`You attacked villain ${chosenVillain.name} for damage of ${chosenHero.attackPower}`); 		
+	 		$('.heroPickedResults p').html(`${chosenVillain.name} attacked you back for damage of ${chosenVillain.counterAttackPower}`); 
 
-		if (chosenVillainNewHp = 0 || chosenHeroNewHp = 0) return;
-
+			$('.villainPicked .HP').html(chosenVillain.hp); 
+			$('.heroPicked .HP').html(chosenHero.hp); 
+		}
 	});
 
-	if (chosenVillainNewHp <= 0 && villainToFight > 0) {
-		isVillainChosen = false;
-		//hide the villain
-		//pick another villain
-	};
 
-	if (chosenVillainNewHp <=0 && villainsToFight === 0) {
+	if (chosenVillain.hp <= 0 && villainsToFight > 0){
+			$(".villainsContent").removeClass("villainsRemaining");
+			isVillainChosen = false;
+			$('.villainPickedResults p').html(`You won this round against ${chosenVillain.name}. Pick a new villain to fight!`); 		
+	 		$('.heroPickedResults p').html(`${chosenVillain.name} you lost.`); 
+	}
+
+	if (chosenVillain.hp <= 0 && villainsToFight === 0) {
 		gameOver = true;
 		win = true;
-	};
+			$('.villainPickedResults p').html(`You won against ${chosenVillain.name}`); 		
+	 		$('.heroPickedResults p').html(`${chosenVillain.name} you lost.`); 
+	}
 
-
+	if (chosenHero.hp <= 0) {
+		gameOver = true;
+		lose = true;
+	}
 
 
 });
 
 
-		// if (villainsToFight < 0) {
-		// 		gameOver = true;
-		// 		lose = true;
-		// 	}
 
-		// else  {
-
-		// 	//pick another villain and fight again
-		// }
-		
-	
-
-
-
-
-
-
-	// 		defeatVillain = true;
+	// if (chosenVillain.Hp <= 0 && villainToFight > 0) {
+	// 	//hide the villain
+			
 
 	// 		$(".villainsContent").css("opacity", "0");
 
@@ -171,7 +154,3 @@ $(document).ready(function() {
 	// 	}
 	// 	}
 	// });
-
-
-
-
