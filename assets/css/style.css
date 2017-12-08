@@ -1,7 +1,10 @@
 body {
 	position: relative;
-	background-image: url("../images/backdrop.jpg");
+	background-image: url("../images/backdrop2.jpg");
 	background-size: cover;
+	background-position: -27px 316px;
+	max-height: 500px;
+	min-height: 500px;
 }
 
 .card-img-top {
@@ -18,17 +21,19 @@ body {
 }
 
 .navbar {
-	background-color: red;
+	background-color: #800000;
 	margin-bottom: 5px;
 }
 
 .navbar-brand {
 	font-size: 40px;
+	color: white;
+
 }
 
 .card-text {
 	border: 2px black solid;
-	background-color: #1E90FF;
+	background-color: #6495ED;
 }
 
 h4 {
@@ -42,12 +47,12 @@ p {
 
 .villainsContent .card-text {
 	border: 2px black solid;
-	background-color: #9ACD32;
+	background-color: #8FBC8F;
 }
 
 .enemy-nav {
 	width: 56.5%;
-	background-color: #9ACD32;
+	background-color: #8FBC8F;
 }
 
 .card-title {
@@ -68,7 +73,7 @@ p {
 }
 
 .heroesSubheading {
-	background-color: #1E90FF;
+	background-color: #6495ED;
 	text-align: center;
 	margin: 5px;
 	width: 100%;
@@ -77,7 +82,7 @@ p {
 }
 
 .villainsSubheading {
-	background-color: #9ACD32;
+	background-color: #8FBC8F;
 	text-align: center;
 	margin: 5px;
 	width: 100%;
@@ -102,7 +107,9 @@ p {
 }
 
 .attackButton {
-	visibility:hidden
+	visibility:hidden;
+	margin-top: 20px;
+	float: left;
 }
 
 .villainPickedResults p {
@@ -118,6 +125,11 @@ p {
 	margin-left: 5px;
 	width: 100%;
 }
+
+.card-text {
+	margin: 2px;
+}
+
 
 
 
