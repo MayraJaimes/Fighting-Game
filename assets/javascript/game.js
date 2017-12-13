@@ -88,11 +88,6 @@ function initializeGame() {
 //Attack button
 		
 	$(".attackButton").on("click", function() {
-		console.log('isVillainChosen', isVillainChosen)
-		console.log('isHeroChosen', isHeroChosen)
-		console.log('villainsToFight: ' + villainsToFight);
-		console.log('chosenHero', chosenHero)
-		console.log('chosenVillain', chosenVillain)
 		if (isVillainChosen && isHeroChosen && chosenHero.hp > 0 && chosenVillain.hp > 0 && villainsToFight >= 0 ) {
 			chosenVillain.hp -= chosenHero.ap;
 			chosenHero.hp -= chosenVillain.ap;
@@ -148,15 +143,15 @@ function initializeGame() {
 			villainsToFight = 4;
 			gameOver = false;
 			villains.villain1.hp = Math.floor(Math.random()*200) + 100;
-			villains.villain2.hp = Math.floor(Math.random()*200) + 100;;
-			villains.villain3.hp = Math.floor(Math.random()*200) + 100;;
-			villains.villain4.hp = Math.floor(Math.random()*200) + 100;;
+			villains.villain2.hp = Math.floor(Math.random()*200) + 100;
+			villains.villain3.hp = Math.floor(Math.random()*200) + 100;
+			villains.villain4.hp = Math.floor(Math.random()*200) + 100;
 			chosenHero.hp;
 
 			$('#villain1 .HP').html(villains.villain1.hp); 
-		$('#villain2 .HP').html(villains.villain2.hp); 
-		$('#villain3 .HP').html(villains.villain3.hp); 
-		$('#villain4 .HP').html(villains.villain4.hp); 
+			$('#villain2 .HP').html(villains.villain2.hp); 
+			$('#villain3 .HP').html(villains.villain3.hp); 
+			$('#villain4 .HP').html(villains.villain4.hp); 
 
 			$(".villainPicked").empty();
 			$(".heroPicked").empty();
