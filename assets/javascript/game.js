@@ -11,6 +11,9 @@ $(document).ready(function() {
 
 	var currentVillain;
 
+function initializeGame() {
+		//Math.floor(Math.random()*200) + 100
+
 	var Villain = function(name, ap, isHero) {
 		this.name = name;
 		this.ap = ap;
@@ -23,9 +26,7 @@ $(document).ready(function() {
 		this.ap = 20;
 		this.hp = 900;
 		this.isHero = true;
-
-function initializeGame() {
-		//Math.floor(Math.random()*200) + 100
+	}
 
 	var heroes = {
 		hero1: new Hero('Captain America', 20),
@@ -50,6 +51,7 @@ function initializeGame() {
 		$('#villain3 .HP').html(villains.villain3.hp); 
 		$('#villain4 .HP').html(villains.villain4.hp); 
 
+
 //Click Hero
 
     $(".hero").on("click", function() {
@@ -73,6 +75,7 @@ function initializeGame() {
 			villainsToFight --;
 			var villainId = $(this).attr('id');
 			chosenVillain = villains[villainId];
+			console.log('chosenVillain in villain select', chosenVillain)
 			$(this).clone().appendTo(".villainPicked");
 			$(".villainsContent").addClass("villainsRemaining");
 			var villainsGameSubheading =`<p class="villainsSubheading">You are fighting ${chosenVillain.name}! </p>`; 
@@ -85,6 +88,11 @@ function initializeGame() {
 //Attack button
 		
 	$(".attackButton").on("click", function() {
+		console.log('isVillainChosen', isVillainChosen)
+		console.log('isHeroChosen', isHeroChosen)
+		console.log('villainsToFight: ' + villainsToFight);
+		console.log('chosenHero', chosenHero)
+		console.log('chosenVillain', chosenVillain)
 		if (isVillainChosen && isHeroChosen && chosenHero.hp > 0 && chosenVillain.hp > 0 && villainsToFight >= 0 ) {
 			chosenVillain.hp -= chosenHero.ap;
 			chosenHero.hp -= chosenVillain.ap;
@@ -135,6 +143,21 @@ function initializeGame() {
 	});
 
 		$(".resetButton").on("click", function() {
+			isHeroChosen = false;
+			isVillainChosen = false;
+			villainsToFight = 4;
+			gameOver = false;
+			villains.villain1.hp = Math.floor(Math.random()*200) + 100;
+			villains.villain2.hp = Math.floor(Math.random()*200) + 100;;
+			villains.villain3.hp = Math.floor(Math.random()*200) + 100;;
+			villains.villain4.hp = Math.floor(Math.random()*200) + 100;;
+			chosenHero.hp;
+
+			$('#villain1 .HP').html(villains.villain1.hp); 
+		$('#villain2 .HP').html(villains.villain2.hp); 
+		$('#villain3 .HP').html(villains.villain3.hp); 
+		$('#villain4 .HP').html(villains.villain4.hp); 
+
 			$(".villainPicked").empty();
 			$(".heroPicked").empty();
 			$(".villainPickedSubheading").empty();
@@ -145,10 +168,9 @@ function initializeGame() {
 			$(".villain").removeClass('defeated');
 			$(".villainsContent").removeClass("villainsRemaining");
 			$(".resetButton").css("visibility", "hidden");
-			isVillainChosen = false;
-
 
 	});
+
 };	
 
 			initializeGame();
