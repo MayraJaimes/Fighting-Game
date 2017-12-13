@@ -112,6 +112,12 @@ p {
 	float: left;
 }
 
+.resetButton{
+	visibility:hidden;
+	margin-top: 20px;
+	float: left;
+}
+
 .villainPickedResults p {
 	background-color: #F5F5DC;
 	margin-left: 5px;

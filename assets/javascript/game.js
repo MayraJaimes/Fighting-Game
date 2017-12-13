@@ -6,12 +6,17 @@ $(document).ready(function() {
 	var isVillainChosen = false;
 	var villainsToFight = 4;
 	var gameOver = false;
-	var lose = false;
-	var won = false;
 	var villainsGameSubheading= "";
 	var heroesGameSubheading = "";
 
 	var currentVillain;
+
+	var Villain = function(name, ap, isHero) {
+		this.name = name;
+		this.ap = ap;
+		this.hp = Math.floor(Math.random()*200) + 100;
+		this.isHero = false;
+	}
 	
 	var Hero = function(name, ap, isHero) {
 		this.name = name;
@@ -19,21 +24,14 @@ $(document).ready(function() {
 		this.hp = 900;
 		this.isHero = true;
 
+function initializeGame() {
 		//Math.floor(Math.random()*200) + 100
-	}
 
 	var heroes = {
 		hero1: new Hero('Captain America', 20),
 		hero2: new Hero('Spiderman', 15),
 		hero3: new Hero('Thor', 5),
 		hero4: new Hero('Batman', 10)
-	}
-
-	var Villain = function(name, ap, isHero) {
-		this.name = name;
-		this.ap = ap;
-		this.hp = Math.floor(Math.random()*200) + 100;
-		this.isHero = false;
 	}
 
 	var villains = {
@@ -52,22 +50,13 @@ $(document).ready(function() {
 		$('#villain3 .HP').html(villains.villain3.hp); 
 		$('#villain4 .HP').html(villains.villain4.hp); 
 
-
-	function resetGame() {
-		
-	};
-
-	function startGame() {
-	};	
-
-
 //Click Hero
 
     $(".hero").on("click", function() {
     	if (!isHeroChosen){
     		var heroId = $(this).attr('id');
     		chosenHero = heroes[heroId];
-			$(this).appendTo(".heroPicked");
+			$(this).clone().appendTo(".heroPicked");
 			$(".heroesContent").addClass("heroesRemaining");
 			heroesGameSubheading =`<p class="heroesSubheading">You are ${chosenHero.name}!</p>`; 
 			$(".heroPickedSubheading").append(heroesGameSubheading);
@@ -122,19 +111,20 @@ $(document).ready(function() {
 
 			currentVillain.addClass('defeated');
 			isVillainChosen = false;
-
 		}
 
 		if (chosenVillain.hp <= 0 && villainsToFight === 0) {
 			gameOver = true;
-			win = true;
+			$(".attackButton").css("visibility", "hidden");
+			$(".resetButton").css("visibility", "visible");
 			$('.villainPickedResults p').html(`${chosenVillain.name} you lost.`); 		
 		 	$('.heroPickedResults p').html(`You defeated all of the villains! Click "restart" to play again!`); 
 		}
 
 		if (chosenHero.hp <= 0) {
 			gameOver = true;
-			lose = true;
+			$(".attackButton").css("visibility", "hidden");
+			$(".resetButton").css("visibility", "visible");
 			$('.villainPickedResults p').html(`${chosenVillain.name} won!`); 		
 		 	$('.heroPickedResults p').html(`${chosenHero.name} was defeated. You lost! Click "restart" to play again!`); 
 		}
@@ -143,6 +133,27 @@ $(document).ready(function() {
 		// 	//display restart button
 		// }
 	});
+
+		$(".resetButton").on("click", function() {
+			$(".villainPicked").empty();
+			$(".heroPicked").empty();
+			$(".villainPickedSubheading").empty();
+			$(".heroPickedSubheading").empty();
+			$('.heroPickedResults p').empty(); 
+			$(".villainPickedResults p").empty();
+			$(".heroesContent").removeClass("heroesRemaining");
+			$(".villain").removeClass('defeated');
+			$(".villainsContent").removeClass("villainsRemaining");
+			$(".resetButton").css("visibility", "hidden");
+			isVillainChosen = false;
+
+
+	});
+};	
+
+			initializeGame();
+
+
 });
 
 	//Hide the villain
