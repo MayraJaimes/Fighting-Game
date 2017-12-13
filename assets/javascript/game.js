@@ -11,23 +11,25 @@ $(document).ready(function() {
 	var villainsGameSubheading= "";
 	var heroesGameSubheading = "";
 	
-	var Hero = function(name) {
+	var Hero = function(name, ap, isHero) {
 		this.name = name;
-		this.attackPower = 20;
+		this.ap = 20;
 		this.hp = Math.floor(Math.random()*200) + 100;
+		this.isHero = true;
 	}
 
 	var heroes = {
-		hero1: new Hero('Captain America'),
-		hero2: new Hero('Spiderman'),
-		hero3: new Hero('Thor'),
-		hero4: new Hero('Batman')
+		hero1: new Hero('Captain America', 20),
+		hero2: new Hero('Spiderman', 15),
+		hero3: new Hero('Thor', 5),
+		hero4: new Hero('Batman', 10)
 	}
 
-	var Villain = function(name, counterAttackPower) {
+	var Villain = function(name, ap) {
 		this.name = name;
-		this.counterAttackPower = counterAttackPower;
+		this.ap = ap;
 		this.hp = Math.floor(Math.random()*200) + 100;
+		this.isHero = false;
 	}
 
 	var villains = {
@@ -92,14 +94,14 @@ $(document).ready(function() {
 		
 	$(".attackButton").on("click", function() {
 		if (isVillainChosen && isHeroChosen && chosenHero.hp > 0 && chosenVillain.hp > 0 && villainsToFight >= 0 ) {
-			chosenVillain.hp -= chosenHero.attackPower;
-			chosenHero.hp -= chosenVillain.counterAttackPower;
+			chosenVillain.hp -= chosenHero.ap;
+			chosenHero.hp -= chosenVillain.ap;
 
 			$(".villainPickedResults p").css("visibility", "visible");
 			$(".heroPickedResults p").css("visibility", "visible");
 			
-			$('.villainPickedResults p').html(`${chosenVillain.name} attacked ${chosenHero.name} for damage of ${chosenHero.attackPower}`); 		
-	 		$('.heroPickedResults p').html(`${chosenVillain.name} attacked you back for damage of ${chosenVillain.counterAttackPower}`); 
+			$('.villainPickedResults p').html(`${chosenVillain.name} attacked ${chosenHero.name} for damage of ${chosenHero.ap}`); 		
+	 		$('.heroPickedResults p').html(`${chosenVillain.name} attacked you back for damage of ${chosenVillain.ap}`); 
 
 			$('.villainPicked .HP').html(chosenVillain.hp); 
 			$('.heroPicked .HP').html(chosenHero.hp); 

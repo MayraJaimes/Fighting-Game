@@ -113,7 +113,6 @@ p {
 }
 
 .villainPickedResults p {
-	visibility: hidden;
 	background-color: #F5F5DC;
 	margin-left: 5px;
 	width: 100%;
