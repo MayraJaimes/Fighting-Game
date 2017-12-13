@@ -129,6 +129,11 @@ p {
 	margin: 2px;
 }
 
+.defeated .card-img-top,
+.defeated .card-body {
+	opacity: 0.5;
+}
+
 
 
 
