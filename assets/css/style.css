@@ -21,7 +21,7 @@ body {
 }
 
 .navbar {
-	background-color: #800000;
+	background-color: #D91E2E;
 	margin-bottom: 5px;
 }
 
@@ -33,7 +33,7 @@ body {
 
 .card-text {
 	border: 2px black solid;
-	background-color: #6495ED;
+	background-color: black;
 }
 
 h4 {
@@ -43,11 +43,6 @@ h4 {
  
 p {
 	margin: 0;
-}
-
-.villainsContent .card-text {
-	border: 2px black solid;
-	background-color: #8FBC8F;
 }
 
 .enemy-nav {
@@ -66,15 +61,18 @@ p {
 
 .subheading {
 	margin: 5px;
-	background-color: #D2B48C;
+	background-color: #80A65B;
 	width: 100%;
 	font-size: 20px;
 	position: relative;
 }
 
 .heroesSubheading {
-	background-color: #6495ED;
 	text-align: center;
+
+	background: #214DA6;
+	color: #ffffff;
+
 	margin: 5px;
 	width: 100%;
 	font-size: 20px;
@@ -82,7 +80,8 @@ p {
 }
 
 .villainsSubheading {
-	background-color: #8FBC8F;
+	background-color: #F25D27;
+	color: #ffffff;
 	text-align: center;
 	margin: 5px;
 	width: 100%;
@@ -109,7 +108,6 @@ p {
 .attackButton {
 	visibility:hidden;
 	margin-top: 20px;
-	float: left;
 }
 
 .resetButton{
@@ -141,5 +139,38 @@ p {
 }
 
 
+.hero .card-body {
+	background: #214DA6;
+	color: #ffffff;
+	font-size: 16px;
+	padding: 5px 0;
+}
+
+.villain .card-body {
+	background: #F25D27;
+	color: #ffffff;
+	font-size: 16px;
+	padding: 5px 0;
+}
+
+.hero:hover, .villain:hover {
+	top: -3px;
+	border: 3px solid #fff;
+}
+
+.heroPicked .hero:hover, .villainPicked .villain:hover {
+	top: 0;
+	border: none;
+}
+
+.heroesRemaining .hero:hover {
+	top: 0;
+	border: none;
+}
+
+.villainsRemaining .villain:hover {
+	top: 0;
+	border: none;
+}
 
 
