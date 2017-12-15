@@ -8,49 +8,41 @@ $(document).ready(function() {
 	var gameOver = false;
 	var villainsGameSubheading= "";
 	var heroesGameSubheading = "";
+	var heroes = {};
+	var villains = {};
 
 	var currentVillain;
 
 function initializeGame() {
-		//Math.floor(Math.random()*200) + 100
 
-	var Villain = function(name, ap, isHero) {
+	var Character = function(name, ap, isHero) {
 		this.name = name;
 		this.ap = ap;
 		this.hp = Math.floor(Math.random()*200) + 100;
-		this.isHero = false;
+		this.isHero = isHero || false;
 	}
 	
-	var Hero = function(name, ap, isHero) {
-		this.name = name;
-		this.ap = 20;
-		this.hp = 900;
-		this.isHero = true;
+	var heroesList = [
+	{name: 'Captain America', ap: 20, isHero: true}, 
+	{name: 'Spiderman', ap: 15, isHero: true}, 
+	{name: 'Thor', ap: 5, isHero: true}, 
+	{name: 'Batman', ap: 10, isHero: true}];
+	
+	var villList = [
+	{name: 'Red Skull', ap: 20}, 
+	{name: 'Joker', ap: 15}, 
+	{name: 'Loki', ap: 5}, 
+	{name: 'Green Goblin', ap: 10}];
+
+	for (i=1; i<heroesList.length+1; i++) {
+		heroes['hero' + i] = new Character(heroesList[i-1].name, heroesList[i-1].ap, heroesList[i-1].isHero);
+		$('#hero' + i + ' .HP').html(heroes['hero' + i].hp);
 	}
 
-	var heroes = {
-		hero1: new Hero('Captain America', 20),
-		hero2: new Hero('Spiderman', 15),
-		hero3: new Hero('Thor', 5),
-		hero4: new Hero('Batman', 10)
-	}
-
-	var villains = {
-		villain1: new Villain("Red Skull", 20),
-		villain2: new Villain("Joker", 15),
-		villain3: new Villain("Loki", 5),
-		villain4: new Villain("Green Goblin", 10)
-	}
-
-		$('#hero1 .HP').html(heroes.hero1.hp); 
-		$('#hero2 .HP').html(heroes.hero2.hp); 
-		$('#hero3 .HP').html(heroes.hero3.hp); 
-		$('#hero4 .HP').html(heroes.hero4.hp); 
-		$('#villain1 .HP').html(villains.villain1.hp); 
-		$('#villain2 .HP').html(villains.villain2.hp); 
-		$('#villain3 .HP').html(villains.villain3.hp); 
-		$('#villain4 .HP').html(villains.villain4.hp); 
-
+	for (i=1; i<villList.length+1; i++) {
+			villains['villain' + i] = new Character(villList[i-1].name, villList[i-1].ap);
+			$('#villain' + i + ' .HP').html(villains['villain' + i].hp);
+		}
 
 //Click Hero
 
@@ -75,7 +67,6 @@ function initializeGame() {
 			villainsToFight --;
 			var villainId = $(this).attr('id');
 			chosenVillain = villains[villainId];
-			console.log('chosenVillain in villain select', chosenVillain)
 			$(this).clone().appendTo(".villainPicked");
 			$(".villainsContent").addClass("villainsRemaining");
 			var villainsGameSubheading =`<p class="villainsSubheading">You are fighting ${chosenVillain.name}! </p>`; 
@@ -142,16 +133,37 @@ function initializeGame() {
 			isVillainChosen = false;
 			villainsToFight = 4;
 			gameOver = false;
-			villains.villain1.hp = Math.floor(Math.random()*200) + 100;
-			villains.villain2.hp = Math.floor(Math.random()*200) + 100;
-			villains.villain3.hp = Math.floor(Math.random()*200) + 100;
-			villains.villain4.hp = Math.floor(Math.random()*200) + 100;
-			chosenHero.hp;
+			heroes = {};
+			villains = {};
 
-			$('#villain1 .HP').html(villains.villain1.hp); 
-			$('#villain2 .HP').html(villains.villain2.hp); 
-			$('#villain3 .HP').html(villains.villain3.hp); 
-			$('#villain4 .HP').html(villains.villain4.hp); 
+			Character = function(name, ap, isHero) {
+				this.name = name;
+				this.ap = ap;
+				this.hp = Math.floor(Math.random()*200) + 100;
+				this.isHero = isHero || false;
+			}
+			
+			heroesList = [
+			{name: 'Captain America', ap: 20, isHero: true}, 
+			{name: 'Spiderman', ap: 15, isHero: true}, 
+			{name: 'Thor', ap: 5, isHero: true}, 
+			{name: 'Batman', ap: 10, isHero: true}];
+			
+			villList = [
+			{name: 'Red Skull', ap: 20}, 
+			{name: 'Joker', ap: 15}, 
+			{name: 'Loki', ap: 5}, 
+			{name: 'Green Goblin', ap: 10}];
+
+			for (i=1; i<heroesList.length+1; i++) {
+				heroes['hero' + i] = new Character(heroesList[i-1].name, heroesList[i-1].ap, heroesList[i-1].isHero);
+				$('#hero' + i + ' .HP').html(heroes['hero' + i].hp);
+			}
+
+			for (i=1; i<villList.length+1; i++) {
+				villains['villain' + i] = new Character(villList[i-1].name, villList[i-1].ap);
+				$('#villain' + i + ' .HP').html(villains['villain' + i].hp);
+			}
 
 			$(".villainPicked").empty();
 			$(".heroPicked").empty();

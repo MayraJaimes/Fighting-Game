@@ -26,9 +26,8 @@ body {
 }
 
 .navbar-brand {
-	font-size: 40px;
+	font-size: 30px;
 	color: white;
-
 }
 
 .card-text {
@@ -60,19 +59,16 @@ p {
 }
 
 .subheading {
-	margin: 5px;
+	margin: 0 5px;
 	background-color: #80A65B;
 	width: 100%;
-	font-size: 20px;
-	position: relative;
+	font-size: 18px;
 }
 
 .heroesSubheading {
 	text-align: center;
-
 	background: #214DA6;
 	color: #ffffff;
-
 	margin: 5px;
 	width: 100%;
 	font-size: 20px;
@@ -118,15 +114,15 @@ p {
 
 .villainPickedResults p {
 	background-color: #F5F5DC;
-	margin-left: 5px;
+	margin-left: 54px;
 	width: 100%;
 }
 
 .heroPickedResults p {
-	visibility: hidden;
 	background-color: #F5F5DC;
-	margin-left: 5px;
+	margin-left: -45px;
 	width: 100%;
+	text-align: center;
 }
 
 .card-text {
@@ -173,4 +169,15 @@ p {
 	border: none;
 }
 
+.attackButton .btn {
+	margin-top: 80px;
+}
 
+.resetButton .btn {
+	margin-top: -80px;
+}
+
+.heroPickedSubheading, .villainPickedSubheading {
+	width: 60%;
+	margin: 0 auto;
+}
