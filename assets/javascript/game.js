@@ -49,6 +49,14 @@ $(document).ready(function() {
 			$('#villain' + i + ' .HP').html(villains['villain' + i].hp);
 	}
 
+	function heroDefeated(){
+		gameOver = true;
+		attackButton.css("visibility", "hidden");
+		resetButton.css("visibility", "visible");
+		villainPickedResultsP.html(`${chosenVillain.name} won!`); 		
+	 	heroPickedResultsP.html(`${chosenHero.name} was defeated. You lost! Click "restart" to play again!`); 
+ 	}
+
 	function resetGame () {
 		resetButton.on("click", function() {
 			isHeroChosen = false;
@@ -170,11 +178,7 @@ $(document).ready(function() {
 			}
 
 			if (chosenHero.hp <= 0) {
-				gameOver = true;
-				attackButton.css("visibility", "hidden");
-				resetButton.css("visibility", "visible");
-				villainPickedResultsP.html(`${chosenVillain.name} won!`); 		
-			 	heroPickedResultsP.html(`${chosenHero.name} was defeated. You lost! Click "restart" to play again!`); 
+				heroDefeated ();
 			}
 
 			if (gameOver = true) {
