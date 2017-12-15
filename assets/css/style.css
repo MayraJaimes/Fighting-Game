@@ -126,7 +126,7 @@ p {
 }
 
 .card-text {
-	margin: 2px;
+	margin: 5px 0;
 }
 
 .defeated .card-img-top,
@@ -139,19 +139,19 @@ p {
 	background: #214DA6;
 	color: #ffffff;
 	font-size: 16px;
-	padding: 5px 0;
+	padding: 1px 0;
 }
 
 .villain .card-body {
 	background: #F25D27;
 	color: #ffffff;
 	font-size: 16px;
-	padding: 5px 0;
+	padding: 1px 0;
 }
 
 .hero:hover, .villain:hover {
 	top: -3px;
-	border: 3px solid #fff;
+	border: 1px solid #fff;
 }
 
 .heroPicked .hero:hover, .villainPicked .villain:hover {
