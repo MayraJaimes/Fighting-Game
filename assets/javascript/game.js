@@ -20,11 +20,22 @@ $(document).ready(function() {
 	var heroesContent = $(".heroesContent");
 	var currentVillain;
 
-	var Character = function(name, ap, isHero) {
-		this.name = name;
-		this.ap = ap;
-		this.hp = Math.floor(Math.random()*200) + 100;
-		this.isHero = isHero || false;
+	class Character {
+		constructor(name, ap, isHero) {
+			this.name = name;
+			this.ap = ap;
+ 			this.baseAtk = ap;
+			this.hp = Math.floor(Math.random()*200) + 100;
+			this.isHero = isHero || false;
+		}
+		attack(enemy) {
+			if (this.isHero) {
+				enemy.hp = enemy.hp - this.ap;
+				this.ap = this.ap + this.baseAtk ;
+			} else {
+				enemy.hp -= this.ap;
+			}
+		}
 	}
 	
 	var heroesList = [
@@ -49,13 +60,24 @@ $(document).ready(function() {
 			$('#villain' + i + ' .HP').html(villains['villain' + i].hp);
 	}
 
-
 	function defeatedHero(){
 		gameOver = true;
 		attackButton.css("visibility", "hidden");
 		resetButton.css("visibility", "visible");
 		villainPickedResultsP.html(`${chosenVillain.name} won!`); 		
 		heroPickedResultsP.html(`${chosenHero.name} was defeated. You lost! Click "restart" to play again!`);
+	}
+
+	function defeatedVillain(){
+		villainPickedResultsP.html(`${chosenVillain.name} lost.`); 
+		heroPickedResultsP.html(`You won this round against ${chosenVillain.name}. Pick a new villain to fight!`); 		
+		villainsContent.removeClass("villainsRemaining");
+ 		heroPickedResultsP.empty(); 
+		$(".villainPicked").empty();
+		$(".villainPickedSubheading").empty();
+		villainPickedResultsP.empty();
+		currentVillain.addClass('defeated');
+		isVillainChosen = false;
 	}
 
 	function resetGame(){
@@ -66,13 +88,24 @@ $(document).ready(function() {
 		heroes = {};
 		villains = {};
 
-		Character = function(name, ap, isHero) {
-			this.name = name;
-			this.ap = ap;
-			this.hp = Math.floor(Math.random()*200) + 100;
-			this.isHero = isHero || false;
-		}
-		
+		class Character {
+			constructor(name, ap, isHero) {
+				this.name = name;
+				this.ap = ap;
+	 			this.baseAtk = ap;
+				this.hp = Math.floor(Math.random()*200) + 100;
+				this.isHero = isHero || false;
+			}
+			attack(enemy) {
+				if (this.isHero) {
+					enemy.hp = enemy.hp - this.ap;
+					this.ap = this.ap + this.baseAtk ;
+				} else {
+					enemy.hp -= this.ap;
+				}
+			}
+		}	
+			
 		heroesList = [
 		{name: 'Captain America', ap: 20, isHero: true}, 
 		{name: 'Spiderman', ap: 15, isHero: true}, 
@@ -105,7 +138,7 @@ $(document).ready(function() {
 		$(".villain").removeClass('defeated');
 		villainsContent.removeClass("villainsRemaining");
 		resetButton.css("visibility", "hidden");
-	};
+	}
 
 	function initializeGame() {
 	    $(".hero").on("click", function() {
@@ -139,26 +172,18 @@ $(document).ready(function() {
 //Attack button
 		attackButton.on("click", function() {
 			if (isVillainChosen && isHeroChosen && chosenHero.hp > 0 && chosenVillain.hp > 0 && villainsToFight >= 0 ) {
-				chosenVillain.hp -= chosenHero.ap;
-				chosenHero.hp -= chosenVillain.ap;
+				chosenHero.attack(chosenVillain);
+				chosenVillain.attack(chosenHero);
 				villainPickedResultsP.css("visibility", "visible");
 				heroPickedResultsP.css("visibility", "visible");			
-				villainPickedResultsP.html(`${chosenVillain.name} attacked ${chosenHero.name} for damage of ${chosenHero.ap}`); 		
+				villainPickedResultsP.html(`${chosenHero.name} attacked ${chosenVillain.name} for damage of ${chosenHero.ap}`); 		
 		 		heroPickedResultsP.html(`${chosenVillain.name} attacked you back for damage of ${chosenVillain.ap}`); 
 				$('.villainPicked .HP').html(chosenVillain.hp); 
 				$('.heroPicked .HP').html(chosenHero.hp); 
 			}
 
 			if (chosenVillain.hp <= 0 && villainsToFight > 0){
-				villainPickedResultsP.html(`${chosenVillain.name} lost.`); 
-				heroPickedResultsP.html(`You won this round against ${chosenVillain.name}. Pick a new villain to fight!`); 		
-				villainsContent.removeClass("villainsRemaining");
-		 		heroPickedResultsP.empty(); 
-				$(".villainPicked").empty();
-				$(".villainPickedSubheading").empty();
-				villainPickedResultsP.empty();
-				currentVillain.addClass('defeated');
-				isVillainChosen = false;
+				defeatedVillain();
 			}
 
 			if (chosenVillain.hp <= 0 && villainsToFight === 0) {
