@@ -10,6 +10,8 @@ $(document).ready(function() {
 	var heroesGameSubheading = "";
 	var heroes = {};
 	var villains = {};
+	var heroesHTML = "";
+	var villainsHTML = "";
 
 	var heroPickedSubheading = $(".heroPickedSubheading");
 	var heroPickedResultsP = $('.heroPickedResults p');
@@ -18,15 +20,18 @@ $(document).ready(function() {
 	var resetButton = $(".resetButton");
 	var villainsContent = $(".villainsContent");
 	var heroesContent = $(".heroesContent");
+	var heroesContainer = $(".heroesContainer");
+	var villainsContainer = $(".villainsContainer");
 	var currentVillain;
 
 	class Character {
-		constructor(name, ap, isHero) {
+		constructor(name, ap, isHero, image) {
 			this.name = name;
 			this.ap = ap;
  			this.baseAtk = ap;
 			this.hp = Math.floor(Math.random()*200) + 100;
 			this.isHero = isHero || false;
+			this.image = image || '';
 		}
 		attack(enemy) {
 			if (this.isHero) {
@@ -39,26 +44,48 @@ $(document).ready(function() {
 	}
 	
 	var heroesList = [
-		{name: 'Captain America', ap: 20, isHero: true}, 
-		{name: 'Spiderman', ap: 15, isHero: true}, 
-		{name: 'Thor', ap: 5, isHero: true}, 
-		{name: 'Batman', ap: 10, isHero: true}];
+		{name: 'Captain America', ap: 20, isHero: true, image: 'CaptainAmerica'}, 
+		{name: 'Spiderman', ap: 15, isHero: true, image: 'Spiderman'}, 
+		{name: 'Thor', ap: 5, isHero: true, image: 'Thor'}, 
+		{name: 'Batman', ap: 10, isHero: true, image: 'Batman'}];
 	
 	var villList = [
-		{name: 'Red Skull', ap: 20}, 
-		{name: 'Joker', ap: 15}, 
-		{name: 'Loki', ap: 5}, 
-		{name: 'Green Goblin', ap: 10}];
+		{name: 'Red Skull', ap: 20, isHero: false, image: 'RedSkull'}, 
+		{name: 'Joker', ap: 15, isHero: false, image: 'Joker'}, 
+		{name: 'Loki', ap: 5, isHero: false, image: 'Loki'}, 
+		{name: 'Green Goblin', ap: 10, isHero: false, image: 'GreenGoblin'}];
 
 	for (i=1; i<heroesList.length+1; i++) {
-		heroes['hero' + i] = new Character(heroesList[i-1].name, heroesList[i-1].ap, heroesList[i-1].isHero);
-		$('#hero' + i + ' .HP').html(heroes['hero' + i].hp);
+		heroes['hero' + i] = new Character(heroesList[i-1].name, heroesList[i-1].ap, heroesList[i-1].isHero, heroesList[i-1].image);
+		
+		heroesHTML += `<div class ="col-md-3 col-sm-3 col-xs-3">
+						<div id="hero${i}" class="card hero" style="width: 100%;">
+						  <img id="image" class="card-img-top" src="assets/images/${heroes['hero' + i].image}.jpg" alt="${heroes['hero' + i].name}">
+						  <div class="card-body">
+						    <h4 class="card-title">${heroes['hero' + i].name}</h4>
+						    <p class="card-text">HP:<span class="HP">${heroes['hero' + i].hp}</span></p>
+						  </div>
+						</div>
+					</div>`
 	}
 
+	heroesContainer.append(heroesHTML);
+
 	for (i=1; i<villList.length+1; i++) {
-			villains['villain' + i] = new Character(villList[i-1].name, villList[i-1].ap);
-			$('#villain' + i + ' .HP').html(villains['villain' + i].hp);
+		villains['villain' + i] = new Character(villList[i-1].name, villList[i-1].ap, villList[i-1].isHero, villList[i-1].image);
+
+		villainsHTML += `<div class ="col-md-3 col-sm-3 col-xs-3">
+						<div id= "villain${i}" class="card villain" style="width: 100%;">
+						  <img id="image" class="card-img-top" src="assets/images/${villains['villain' + i].image}.jpg" alt="${villains['villain' + i].name}">
+						  <div class="card-body">
+						    <h4 class="card-title">${villains['villain' + i].name}</h4>
+						    <p class="card-text">HP:<span class="HP">${villains['villain' + i].hp}</span></p>
+						  </div>
+						</div>
+					</div>`
 	}
+	
+	villainsContainer.append(villainsHTML);
 
 	function defeatedHero(){
 		gameOver = true;
