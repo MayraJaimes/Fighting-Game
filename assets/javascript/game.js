@@ -24,6 +24,8 @@ $(document).ready(function() {
 	var villainsContainer = $(".villainsContainer");
 	var currentVillain;
 
+function startingVariables(){
+
 	class Character {
 		constructor(name, ap, isHero, image) {
 			this.name = name;
@@ -69,7 +71,7 @@ $(document).ready(function() {
 					</div>`
 	}
 
-	heroesContainer.append(heroesHTML);
+	heroesContainer.html(heroesHTML);
 
 	for (i=1; i<villList.length+1; i++) {
 		villains['villain' + i] = new Character(villList[i-1].name, villList[i-1].ap, villList[i-1].isHero, villList[i-1].image);
@@ -85,7 +87,33 @@ $(document).ready(function() {
 					</div>`
 	}
 	
-	villainsContainer.append(villainsHTML);
+	villainsContainer.html(villainsHTML);
+}
+
+startingVariables();
+
+	function resetGame(){
+		isHeroChosen = false;
+		isVillainChosen = false;
+		villainsToFight = 4;
+		gameOver = false;
+		heroes = {};
+		villains = {};
+		villainsHTML = "";
+		heroesHTML = "";
+		startingVariables();
+		$(".villainPicked").empty();
+		$(".heroPicked").empty();
+		$(".villainPickedSubheading").empty();
+		$(".heroPickedSubheading").empty();
+		heroPickedResultsP.empty(); 
+		villainPickedResultsP.empty();
+		heroesContent.removeClass("heroesRemaining");
+		$(".villain").removeClass('defeated');
+		villainsContent.removeClass("villainsRemaining");
+		resetButton.css("visibility", "hidden");
+		initializeGame();
+	}
 
 	function defeatedHero(){
 		gameOver = true;
@@ -107,68 +135,9 @@ $(document).ready(function() {
 		isVillainChosen = false;
 	}
 
-	function resetGame(){
-		isHeroChosen = false;
-		isVillainChosen = false;
-		villainsToFight = 4;
-		gameOver = false;
-		heroes = {};
-		villains = {};
-
-		class Character {
-			constructor(name, ap, isHero) {
-				this.name = name;
-				this.ap = ap;
-	 			this.baseAtk = ap;
-				this.hp = Math.floor(Math.random()*200) + 100;
-				this.isHero = isHero || false;
-			}
-			attack(enemy) {
-				if (this.isHero) {
-					enemy.hp = enemy.hp - this.ap;
-					this.ap = this.ap + this.baseAtk ;
-				} else {
-					enemy.hp -= this.ap;
-				}
-			}
-		}	
-			
-		heroesList = [
-		{name: 'Captain America', ap: 20, isHero: true}, 
-		{name: 'Spiderman', ap: 15, isHero: true}, 
-		{name: 'Thor', ap: 5, isHero: true}, 
-		{name: 'Batman', ap: 10, isHero: true}];
-		
-		villList = [
-		{name: 'Red Skull', ap: 20}, 
-		{name: 'Joker', ap: 15}, 
-		{name: 'Loki', ap: 5}, 
-		{name: 'Green Goblin', ap: 10}];
-
-		for (i=1; i<heroesList.length+1; i++) {
-			heroes['hero' + i] = new Character(heroesList[i-1].name, heroesList[i-1].ap, heroesList[i-1].isHero);
-			$('#hero' + i + ' .HP').html(heroes['hero' + i].hp);
-		}
-
-		for (i=1; i<villList.length+1; i++) {
-			villains['villain' + i] = new Character(villList[i-1].name, villList[i-1].ap);
-			$('#villain' + i + ' .HP').html(villains['villain' + i].hp);
-		}
-
-		$(".villainPicked").empty();
-		$(".heroPicked").empty();
-		$(".villainPickedSubheading").empty();
-		$(".heroPickedSubheading").empty();
-		heroPickedResultsP.empty(); 
-		villainPickedResultsP.empty();
-		heroesContent.removeClass("heroesRemaining");
-		$(".villain").removeClass('defeated');
-		villainsContent.removeClass("villainsRemaining");
-		resetButton.css("visibility", "hidden");
-	}
-
 	function initializeGame() {
 	    $(".hero").on("click", function() {
+	    	console.log('hero clicked: ' + isHeroChosen)
 	    	if (!isHeroChosen){
 	    		var heroId = $(this).attr('id');
 	    		chosenHero = heroes[heroId];
