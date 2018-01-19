@@ -21,19 +21,18 @@ body {
 }
 
 .navbar {
-	background-color: #800000;
+	background-color: #D91E2E;
 	margin-bottom: 5px;
 }
 
 .navbar-brand {
-	font-size: 40px;
+	font-size: 30px;
 	color: white;
-
 }
 
 .card-text {
 	border: 2px black solid;
-	background-color: #6495ED;
+	background-color: black;
 }
 
 h4 {
@@ -43,11 +42,6 @@ h4 {
  
 p {
 	margin: 0;
-}
-
-.villainsContent .card-text {
-	border: 2px black solid;
-	background-color: #8FBC8F;
 }
 
 .enemy-nav {
@@ -65,16 +59,16 @@ p {
 }
 
 .subheading {
-	margin: 5px;
-	background-color: #D2B48C;
+	margin: 0 5px;
+	background-color: #80A65B;
 	width: 100%;
-	font-size: 20px;
-	position: relative;
+	font-size: 18px;
 }
 
 .heroesSubheading {
-	background-color: #6495ED;
 	text-align: center;
+	background: #214DA6;
+	color: #ffffff;
 	margin: 5px;
 	width: 100%;
 	font-size: 20px;
@@ -82,7 +76,8 @@ p {
 }
 
 .villainsSubheading {
-	background-color: #8FBC8F;
+	background-color: #F25D27;
+	color: #ffffff;
 	text-align: center;
 	margin: 5px;
 	width: 100%;
@@ -109,27 +104,80 @@ p {
 .attackButton {
 	visibility:hidden;
 	margin-top: 20px;
+}
+
+.resetButton{
+	visibility:hidden;
+	margin-top: 20px;
 	float: left;
 }
 
 .villainPickedResults p {
-	visibility: hidden;
 	background-color: #F5F5DC;
-	margin-left: 5px;
+	margin-left: 54px;
 	width: 100%;
 }
 
 .heroPickedResults p {
-	visibility: hidden;
 	background-color: #F5F5DC;
-	margin-left: 5px;
+	margin-left: -45px;
 	width: 100%;
+	text-align: center;
 }
 
 .card-text {
-	margin: 2px;
+	margin: 5px 0;
+}
+
+.defeated .card-img-top,
+.defeated .card-body {
+	opacity: 0.5;
 }
 
 
+.hero .card-body {
+	background: #214DA6;
+	color: #ffffff;
+	font-size: 16px;
+	padding: 1px 0;
+}
 
+.villain .card-body {
+	background: #F25D27;
+	color: #ffffff;
+	font-size: 16px;
+	padding: 1px 0;
+}
 
+.hero:hover, .villain:hover {
+	top: -3px;
+	border: 1px solid #fff;
+}
+
+.heroPicked .hero:hover, .villainPicked .villain:hover {
+	top: 0;
+	border: none;
+}
+
+.heroesRemaining .hero:hover {
+	top: 0;
+	border: none;
+}
+
+.villainsRemaining .villain:hover {
+	top: 0;
+	border: none;
+}
+
+.attackButton .btn {
+	margin-top: 80px;
+}
+
+.resetButton .btn {
+	margin-top: -80px;
+}
+
+.heroPickedSubheading, .villainPickedSubheading {
+	width: 60%;
+	margin: 0 auto;
+}

@@ -11,7 +11,7 @@
 <body> 
 
 	<nav class="navbar navbar-light bg-light">
-		<span class="navbar-brand mb-0 h1">Fighting Game</span>
+		<span class="navbar-brand mb-0 h1">Heroes vs Villains: RPG Game</span>
 	</nav>
 
 	<div class="container">
@@ -19,13 +19,8 @@
 		<div class="main subheading">
 			<div class="instructions">
 				<p class="title">Instructions:</p>
-					<ol>
-						<li> For this game you first have to pick a heroe.</li> 
-						<li> Then pick the villain you want to fight first.</li>
-						<li> If you defeat the first villian you will go on to fight the next villain you pick </li> 
-					</ol>
-
- <p>The goal is the game is to reduce the villains health points to 0 or below. If at any point your character's health points get to 0 or below you lose the game. If you defeat all the villains you win! </p>
+				<p> For this game you first pick a heroe. This hero will be your character throughout the game. Then pick the villain you want to fight first. If you defeat the first villian you will go on to fight the next villain you pick. </p> 
+				<p>The goal is the game is to reduce the villains health points to 0 or below. If at any point your character's health points get to 0 or below you lose the game. If you defeat all the villains you win! </p>
 			</div>
 		</div>
 
@@ -34,94 +29,19 @@
 				<div class="heroesSubheading">
 				Heroes
 				</div>
-				<div class="row">
-					<div class ="col-md-3 col-sm-3 col-xs-3">
-						<div id= "hero1" class="card hero" data-imageId="1" style="width: 100%;">
-						  <img id="image" class="card-img-top" src="assets/images/CaptainAmerica.jpg" alt="Card image cap">
-						  <div class="card-body">
-						    <h4 class="card-title">Captain America</h4>
-						    <p class="card-text">Health points:<span class="HP"></span></p>
-						  </div>
-						</div>
-					</div>
-					<div class ="col-md-3 col-sm-3 col-xs-3">
-						<div id= "hero2" class="card hero" style="width: 100%;">
-						  <img class="card-img-top" src="assets/images/Spiderman.jpg" alt="Card image cap">
-						  <div class="card-body">
-						    <h4 class="card-title">Spiderman</h4>
-						    <p class="card-text">Health points:<span class="HP"></span></p>
-						  </div>
-						</div>
-					</div>
-					<div class ="col-md-3 col-sm-3 col-xs-3">
-						<div id= "hero3" class="card hero" style="width: 100%;">
-						  <img class="card-img-top" src="assets/images/Thor.jpg" alt="Card image cap">
-						  <div class="card-body">
-						    <h4 class="card-title">Thor</h4>
-						    <p class="card-text">Health points:<span class="HP"></span></p>
-						  </div>
-						</div>
-					</div>
-					<div class ="col-md-3 col-sm-3 col-xs-3">
-						<div id= "hero4" class="card hero" style="width: 100%;">
-						  <img class="card-img-top" src="assets/images/Batman.jpg" alt="Card image cap">
-						  <div class="card-body">
-						    <h4 class="card-title">Batman</h4>
-						    <p class="card-text">Health points:<span class="HP"></span></p>
-						  </div>
-						</div>
-					</div>
+				<div class="row heroesContainer">
 				</div>
 			</div>
 
 			<div class= "col-md-6 col-sm-12 col-xs-12 villainsContent">
 				<div class="villainsSubheading">
-					Villains
+				Villains
 				</div>
-				<div class= "row">
-					<div class ="col-md-3 col-sm-3 col-xs-3">
-						<div id= "villain1" class="card villain" style="width: 100%;">
-						  <img class="card-img-top" src="assets/images/Red Skull.jpg" alt="Card image cap">
-						  <div class="card-body">
-						    <h4 class="card-title">Red Skull</h4>
-						    <p class="card-text">Health points:<span class="HP"></span></p>
-						  </div>
-						</div>
-					</div>
-					
-					<div class ="col-md-3 col-sm-3 col-xs-3">
-						<div id= "villain2" class="card villain" style="width: 100%;">
-						  <img class="card-img-top" src="assets/images/Joker.jpg" alt="Card image cap">
-						  <div class="card-body">
-						    <h4 class="card-title">Joker</h4>
-						    <p class="card-text">Health points:<span class="HP"></span></p>
-						  </div>
-						</div>
-					</div>
-
-					<div class ="col-md-3 col-sm-3 col-xs-3">
-						<div id= "villain3" class="card villain" style="width: 100%;">
-						  <img class="card-img-top" src="assets/images/Loki.jpg" alt="Card image cap">
-						  <div class="card-body">
-						    <h4 class="card-title">Loki</h4>
-						    <p class="card-text">Health points:<span class="HP"></span></p>
-						  </div>
-						</div>
-					</div>
-
-					<div class ="col-md-3 col-sm-3 col-xs-3">
-						<div id= "villain4" data-imageId="4" class="card villain" style="width: 100%;">
-						  <img class="card-img-top" src="assets/images/GreenGoblin.jpg" alt="Card image cap">
-						  <div class="card-body">
-						    <h4 class="card-title">Green Goblin</h4>
-						    <p class="card-text">Health points:<span class="HP"></span></p>
-						  </div>
-						</div>
-					</div>
+				<div class= "row villainsContainer">
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6 col-sm-6 col-xs-6 text-center heroPickedContent">
+				<div class="col-md-5 col-sm-6 col-xs-6 text-center heroPickedContent">
 					<div class="heroPickedSubheading">
 					</div>
 					<div class="row">
@@ -131,7 +51,21 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6 col-sm-6 col-xs-6 text-center villainPickedContent">
+
+				
+				<div class="col-md-2 col-sm-6 col-xs-6 text-center">
+					<div class= "row">
+						<div class="col-md-12 col-sm-12 col-xs-12 text-center attackButton"> 
+					    	<button id="singlebutton" name="singlebutton" class="btn btn-danger">Attack Button!</button> 
+						</div>
+						<div class="col-md-12 col-sm-12 col-xs-12 text-center resetButton"> 
+			    			<button id="singlebutton" name="singlebutton" class="btn btn-warning">Reset Button!</button> 
+			    		</div>
+					</div>	
+				</div>
+				
+
+				<div class="col-md-5 col-sm-6 col-xs-6 text-center villainPickedContent">
 					<div class="villainPickedSubheading">
 					</div>
 					<div class="row">
@@ -165,14 +99,9 @@
 					</div>
 				</div>
 			</div>
-
-			<div class= "row">
-				<div class="col-md-12 col-sm-12 col-xs-12 text-center attackButton"> 
-			    	<button id="singlebutton" name="singlebutton" class="btn btn-danger">Attack Button!</button> 
-				</div>	
-			</div>
 		</div>
 	</div>
+
 <script type="text/javascript" src="assets/javascript/game.js"></script>
 
 
