@@ -70,7 +70,6 @@ function startingVariables(){
 						</div>
 					</div>`
 	}
-
 	heroesContainer.html(heroesHTML);
 
 	for (i=1; i<villList.length+1; i++) {
@@ -86,12 +85,10 @@ function startingVariables(){
 						</div>
 					</div>`
 	}
-	
 	villainsContainer.html(villainsHTML);
 }
 
 startingVariables();
-
 	function resetGame(){
 		isHeroChosen = false;
 		isVillainChosen = false;
