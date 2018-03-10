@@ -17,7 +17,7 @@ header {
 
 .topSection {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
 	grid-column-gap: 1em;
 	grid-row-gap: 1em;
 }
@@ -122,3 +122,14 @@ h4 {
 	font-size: 1.2em;
 	margin: 5px auto 40px auto;
 }
+
+@media only screen and (min-width: 980px) {
+	.topSection {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-column-gap: 1em;
+		grid-row-gap: 1em;
+	}
+}
+
+
