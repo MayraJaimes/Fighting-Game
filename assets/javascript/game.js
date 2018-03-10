@@ -60,31 +60,21 @@ function startingVariables(){
 	for (i=1; i<heroesList.length+1; i++) {
 		heroes['hero' + i] = new Character(heroesList[i-1].name, heroesList[i-1].ap, heroesList[i-1].isHero, heroesList[i-1].image);
 		
-		heroesHTML += `<div class ="col-md-3 col-sm-3 col-xs-3">
-						<div id="hero${i}" class="card hero" style="width: 100%;">
-						  <img id="image" class="card-img-top" src="assets/images/${heroes['hero' + i].image}.jpg" alt="${heroes['hero' + i].name}">
-						  <div class="card-body">
-						    <h4 class="card-title">${heroes['hero' + i].name}</h4>
-						    <p class="card-text">HP:<span class="HP">${heroes['hero' + i].hp}</span></p>
-						  </div>
-						</div>
-					</div>`
-	}
+		heroesHTML += `<div id="hero${i}" class="hero">
+						  <img id="image" src="assets/images/${heroes['hero' + i].image}.jpg" alt="${heroes['hero' + i].name}">
+						    <h4 >${heroes['hero' + i].name}</h4>
+						    <p>HP:<span class="HP">${heroes['hero' + i].hp}</span></p>
+						</div>`}
 	heroesContainer.html(heroesHTML);
 
 	for (i=1; i<villList.length+1; i++) {
 		villains['villain' + i] = new Character(villList[i-1].name, villList[i-1].ap, villList[i-1].isHero, villList[i-1].image);
 
-		villainsHTML += `<div class ="col-md-3 col-sm-3 col-xs-3">
-						<div id= "villain${i}" class="card villain" style="width: 100%;">
-						  <img id="image" class="card-img-top" src="assets/images/${villains['villain' + i].image}.jpg" alt="${villains['villain' + i].name}">
-						  <div class="card-body">
-						    <h4 class="card-title">${villains['villain' + i].name}</h4>
-						    <p class="card-text">HP:<span class="HP">${villains['villain' + i].hp}</span></p>
-						  </div>
-						</div>
-					</div>`
-	}
+		villainsHTML += `<div id= "villain${i}" class="villain">
+						  <img id="image" src="assets/images/${villains['villain' + i].image}.jpg" alt="${villains['villain' + i].name}">
+						    <h4>${villains['villain' + i].name}</h4>
+						    <p>HP:<span class="HP">${villains['villain' + i].hp}</span></p>
+						</div>`}
 	villainsContainer.html(villainsHTML);
 }
 
@@ -140,7 +130,7 @@ startingVariables();
 	    		chosenHero = heroes[heroId];
 				$(this).clone().appendTo(".heroPicked");
 				heroesContent.addClass("heroesRemaining");
-				heroesGameSubheading =`<p class="heroesSubheading">You are ${chosenHero.name}!</p>`; 
+				heroesGameSubheading =`<p class="heroesSubheading">${chosenHero.name}!</p>`; 
 				heroPickedSubheading.append(heroesGameSubheading);
 				isHeroChosen = true;
 			}
@@ -155,7 +145,7 @@ startingVariables();
 				chosenVillain = villains[villainId];
 				$(this).clone().appendTo(".villainPicked");
 				villainsContent.addClass("villainsRemaining");
-				var villainsGameSubheading =`<p class="villainsSubheading">You are fighting ${chosenVillain.name}! </p>`; 
+				var villainsGameSubheading =`<p class="villainsSubheading">Opponent: ${chosenVillain.name}! </p>`; 
 				$(".villainPickedSubheading").append(villainsGameSubheading);
 				attackButton.css("visibility", "visible");
 				isVillainChosen = true;

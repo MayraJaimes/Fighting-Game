@@ -4,180 +4,123 @@ body {
 	background-size: cover;
 	background-position: -27px 316px;
 	max-height: 500px;
-	min-height: 500px;
-}
-
-.card-img-top {
-	width: 100%;
-	height: 105px;
-}
-
-.card {
-	float: left;
-	background-color: white;
-	margin: 5px;
+	min-height: 500px; 
 	text-align: center;
-	position: relative;
-}
-
-.navbar {
-	background-color: #D91E2E;
-	margin-bottom: 5px;
-}
-
-.navbar-brand {
-	font-size: 30px;
+	font-family: 'Mina', sans-serif;
 	color: white;
 }
 
-.card-text {
-	border: 2px black solid;
-	background-color: black;
+header {
+	margin-top: 30px;
+	font-size: 2em;
+}
+
+.topSection {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+}
+
+.bottomSection {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+}
+
+.heroesContainer, .villainsContainer {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+}
+
+img {
+	width: 145px;
+	height: 145px;
 }
 
 h4 {
-	margin: 2px 0;
 	font-size: 13px;
-}
- 
-p {
-	margin: 0;
-}
-
-.enemy-nav {
-	width: 56.5%;
-	background-color: #8FBC8F;
-}
-
-.card-title {
-	padding: 0px;
-}
-
-.h1 {
-	margin: 0;
-	display: block;
 }
 
 .subheading {
-	margin: 0 5px;
-	background-color: #80A65B;
-	width: 100%;
-	font-size: 18px;
+	margin: 0 auto;
+	color: white;
+	font-size: 16px;
 }
 
-.heroesSubheading {
-	text-align: center;
-	background: #214DA6;
+.villainsSubheading, .heroesSubheading {
 	color: #ffffff;
-	margin: 5px;
-	width: 100%;
-	font-size: 20px;
+	font-size: 28px;
 	position: relative;
-}
-
-.villainsSubheading {
-	background-color: #F25D27;
-	color: #ffffff;
-	text-align: center;
-	margin: 5px;
-	width: 100%;
-	font-size: 20px;
-	position: relative;
-}
+	border-bottom: 1px solid #333;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+} 
 
 .instructions {
-	padding: 5px;
+	padding: 8px;
 }
 
-.instructions .title {
-	font-weight: bold;
-}
-
-.heroesRemaining {
+.heroesRemaining, .villainsRemaining {
 	opacity: .3;
 }
 
-.villainsRemaining {
-	opacity: .3;
-}
-
-.attackButton {
+.attackButton, .resetButton {
 	visibility:hidden;
 	margin-top: 20px;
 }
 
-.resetButton{
-	visibility:hidden;
-	margin-top: 20px;
-	float: left;
+.villainPickedResults p, .heroPickedResults p {
+	color: white;
+	font-size: 1.5em;
 }
 
-.villainPickedResults p {
-	background-color: #F5F5DC;
-	margin-left: 54px;
-	width: 100%;
-}
-
-.heroPickedResults p {
-	background-color: #F5F5DC;
-	margin-left: -45px;
-	width: 100%;
-	text-align: center;
-}
-
-.card-text {
-	margin: 5px 0;
-}
-
-.defeated .card-img-top,
-.defeated .card-body {
+.defeated {
 	opacity: 0.5;
 }
 
-
-.hero .card-body {
-	background: #214DA6;
+.hero img {
+	border: 2px solid #2474A6;
 	color: #ffffff;
-	font-size: 16px;
-	padding: 1px 0;
 }
 
-.villain .card-body {
-	background: #F25D27;
+.villain img {
+	border: 2px solid #E00B27;
 	color: #ffffff;
-	font-size: 16px;
-	padding: 1px 0;
 }
 
 .hero:hover, .villain:hover {
-	top: -3px;
-	border: 1px solid #fff;
+	opacity: 0.5;
 }
 
-.heroPicked .hero:hover, .villainPicked .villain:hover {
-	top: 0;
-	border: none;
-}
-
-.heroesRemaining .hero:hover {
-	top: 0;
-	border: none;
-}
-
+.heroPicked .hero:hover, 
+.villainPicked .villain:hover, 
+.heroesRemaining .hero:hover,
 .villainsRemaining .villain:hover {
+	opacity: 1;
 	top: 0;
 	border: none;
 }
 
-.attackButton .btn {
-	margin-top: 80px;
+.heroPicked, .villainPicked {
+	justify-self: center;
 }
 
-.resetButton .btn {
-	margin-top: -80px;
+.instructions p {
+	width: 50%;
+	font-size: 1.2em;
+	margin: 5px auto 40px auto;
 }
 
-.heroPickedSubheading, .villainPickedSubheading {
-	width: 60%;
-	margin: 0 auto;
+@media only screen and (min-width: 768px) {
+}
+
+@media only screen and (min-width: 980px) {
+}
+
+@media only screen and (min-width: 1240px) {
+
 }
