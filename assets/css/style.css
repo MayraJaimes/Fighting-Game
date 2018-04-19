@@ -1,19 +1,10 @@
 body {
-	background-color: #2474A6;
+	background-color: black;
 	text-align: center;
 	font-family: 'Mina', sans-serif;
 	color: white;
-	margin: 0;
-	padding: 0;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
 	background-image: url(../images/backdrop.jpg);
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: 100%;
+	background-position: cover;
 }
 
 .wrapper {
@@ -111,14 +102,4 @@ h4 {
 	font-size: 1.2em;
 	margin: 5px auto 40px auto;
 }
-
-@media only screen and (min-width: 980px) {
-	.topSection {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		grid-column-gap: 1em;
-		grid-row-gap: 1em;
-	}
-}
-
 
