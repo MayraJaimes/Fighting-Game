@@ -61,7 +61,7 @@ function startingVariables(){
 		heroes['hero' + i] = new Character(heroesList[i-1].name, heroesList[i-1].ap, heroesList[i-1].isHero, heroesList[i-1].image);
 		
 		heroesHTML += `<div id="hero${i}" class="hero">
-						  <img id="image" src="assets/images/${heroes['hero' + i].image}.jpg" alt="${heroes['hero' + i].name}">
+						  <img id="image" src="assets/images/${heroes['hero' + i].image}.png" alt="${heroes['hero' + i].name}">
 						    <h4 >${heroes['hero' + i].name}</h4>
 						    <p>HP:<span class="HP">${heroes['hero' + i].hp}</span></p>
 						</div>`}
@@ -71,7 +71,7 @@ function startingVariables(){
 		villains['villain' + i] = new Character(villList[i-1].name, villList[i-1].ap, villList[i-1].isHero, villList[i-1].image);
 
 		villainsHTML += `<div id= "villain${i}" class="villain">
-						  <img id="image" src="assets/images/${villains['villain' + i].image}.jpg" alt="${villains['villain' + i].name}">
+						  <img id="image" src="assets/images/${villains['villain' + i].image}.png" alt="${villains['villain' + i].name}">
 						    <h4>${villains['villain' + i].name}</h4>
 						    <p>HP:<span class="HP">${villains['villain' + i].hp}</span></p>
 						</div>`}

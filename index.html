@@ -6,57 +6,63 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script> 
 	<link href="https://fonts.googleapis.com/css?family=Mina" rel="stylesheet">
   	<title>Fighting Game</title>
 </head>
-<body> 
+<body>
 
-	<header>
-		Heroes vs Villains: RPG Game
-	</header>
+	<div class="wrapper">
 
-	<div class="instructions">
-		<p> Pick a heroe and then a villain to fight first. If you defeat the first villian you will go on to fight the next villain you pick. The goal is the game is to reduce the villains health points to 0 or below. If your character's health points get to 0 or below you lose. If you defeat all the villains you win! </p>
-	</div>
-
-	<div class="topSection">
-		<div class ="section heroesContent">
-			<div class="heroesSubheading"> Heroes </div>
-			<div class="heroesContainer"> </div>
+		<div class="left">
+			<div class ="section heroesContent">
+				<div class="heroesSubheading"> Heroes </div>
+				<div class="heroesContainer"> </div>
+			</div>
 		</div>
 
-		<div class= "section villainsContent">
-			<div class="villainsSubheading"> Villains </div>
-			<div class= "villainsContainer"> </div>
-		</div>
-	</div>
 
-	<div class="bottomSection">
-		<div class="section heroPickedContent">
-			<div class="heroPickedSubheading"></div>
-			<div class="heroPickedResults"><p></p></div>
-			<div class="heroPicked"></div>
+		<div class="middle">
+			<div>
+				<h1>Heroes vs Villains: RPG Game</h1>
+				<p> Pick a heroe and then a villain to fight first. If you defeat the first villian you will go on to fight the next villain you pick. The goal is the game is to reduce the villains health points to 0 or below. If your character's health points get to 0 or below you lose. If you defeat all the villains you win! </p>
+			</div>
+
+			<div class="battleSection">
+				<div class="section heroPickedContent">
+					<div class="heroPickedSubheading"></div>
+					<div class="heroPickedResults"><p></p></div>
+					<div class="heroPicked"></div>
+				</div>
+				
+				<div>
+					<div class="attackButton"> 
+						<button class="btn btn-danger">Attack Button!</button> 
+					</div>
+					<div class="resetButton"> 
+						<button class="btn btn-warning">Reset Button!</button> 
+					</div>	
+				</div>
+		
+				<div class="section villainPickedContent">
+					<div class="villainPickedSubheading"></div>
+					<div class="villainPickedResults"><p></p></div>
+					<div class="villainPicked"></div>
+				</div>			
+			</div>
 		</div>
 		
-		<div>
-			<div class="attackButton"> 
-				<button class="btn btn-danger">Attack Button!</button> 
+		<div class="right">
+			<div class= "section villainsContent">
+				<div class="villainsSubheading"> Villains </div>
+				<div class= "villainsContainer"> </div>
 			</div>
-			<div class="resetButton"> 
-				<button class="btn btn-warning">Reset Button!</button> 
-			</div>	
 		</div>
 
-		<div class="section villainPickedContent">
-			<div class="villainPickedSubheading"></div>
-			<div class="villainPickedResults"><p></p></div>
-			<div class="villainPicked"></div>
-		</div>			
 	</div>
 
-<script type="text/javascript" src="assets/javascript/game.js"></script>
 
+<script type="text/javascript" src="assets/javascript/game.js"></script>
 
 </body>
 </html>
