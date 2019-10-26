@@ -124,7 +124,7 @@ startingVariables();
 
 	function initializeGame() {
 	    $(".hero").on("click", function() {
-	    	console.log('hero clicked: ' + isHeroChosen)
+	    	//console.log('hero clicked: ' + isHeroChosen)
 	    	if (!isHeroChosen){
 	    		var heroId = $(this).attr('id');
 	    		chosenHero = heroes[heroId];
