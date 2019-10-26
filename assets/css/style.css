@@ -7,6 +7,15 @@ body {
 	background-position: cover;
 }
 
+.instructions {
+  font-weight: 900;
+  font-size: 21px;
+  color: white;
+  margin: 0 auto;
+  width: 60%;
+  background-color: rgba(201, 76, 76, 0.7);
+}
+
 .wrapper {
 	display: grid;
 	grid-template-columns: 1fr 4fr 1fr;
@@ -99,9 +108,9 @@ h4 {
 	margin: 0 auto;
 }
 
-.instructions p {
+/* .instructions p {
 	width: 50%;
 	font-size: 1.2em;
 	margin: 5px auto 40px auto;
-}
+} */
 
